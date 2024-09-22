@@ -1,6 +1,7 @@
 {
     "include": [
-        "**/source"
+        "**/packages",
+        "packages/build.ts"
     ],
     "compilerOptions": {
         // Input

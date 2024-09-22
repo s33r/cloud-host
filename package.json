@@ -8,8 +8,12 @@
         "lib"
     ],
     "scripts": {
-        "build": "rm -rf lib && tsc",
-        "lint": "eslint",
+        "build": "tsx packages/build.ts",
+        "bc:host": "docker buildx build -f dist/host/Dockerfile -t cloud-host .",
+        "rc:host": "docker run -p 80:8080 cloud-host",
+        "bc:client": "docker buildx build -f dist/host -t cloud-client .",
+        "bc:api": "docker buildx build -f dist/api -t cloud-api .",
+        "lint": "tsc --skipLibCheck --noEmit && eslint",
         "docs": "rm -rf docs && typedoc",
         "ci": "npm run lint && npm run build && npm run docs"
     },
@@ -30,7 +34,9 @@
         "@eslint/js": "^9.9.1",
         "@stylistic/eslint-plugin": "^2.7.2",
         "@types/eslint__js": "^8.42.3",
+        "@types/express": "^4.17.21",
         "@types/node": "^22.5.2",
+        "esbuild": "^0.24.0",
         "eslint": "^9.9.1",
         "globals": "^15.9.0",
         "tsx": "^4.19.0",
@@ -39,6 +45,10 @@
         "typescript-eslint": "^8.3.0"
     },
     "dependencies": {
-        "@ehwillows/results": "^0.0.3"
+        "@ehwillows/results": "^0.0.3",
+        "express": "^4.21.0",
+        "pino": "^9.4.0",
+        "pino-pretty": "^11.2.2",
+        "zod": "^3.23.8"
     }
 }

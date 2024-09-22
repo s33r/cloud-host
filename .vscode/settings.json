@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
         "ehwillows",
+        "outdir",
+        "pino",
         "unvalidated"
     ],
     "eslint.format.enable": true,
